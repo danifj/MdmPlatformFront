@@ -1,0 +1,70 @@
+<form [formGroup]="updateForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+        <mat-card-header>
+            <mat-card-title>Edit Campaign</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Campaign" formControlName="campaign">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="ID code campaign" formControlName="campaignCode">
+                        <mat-error *ngIf="updateForm.controls['campaignCode'].hasError('required')">
+                            ID code campaign is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Customer account" formControlName="customerAccount">
+                        <mat-error *ngIf="updateForm.controls['customerAccount'].hasError('required')">
+                            Customer account is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <mat-select [compareWith]="compareObjects" placeholder="Platform" formControlName="idPlatform">
+                            <mat-option *ngFor="let platform of platforms" [value]="platform.abbreviation">
+                                {{ platform.name }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="updateForm.controls['idPlatform'].hasError('required')">
+                            Platform is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput #clicks maxlength="100" placeholder="Clicks" type="number" formControlName="click">
+                        <mat-hint align="end">{{clicks.value.length}} / 10</mat-hint>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput #impressions maxlength="100" placeholder="Impressions" type="number" formControlName="impression">
+                        <mat-hint align="end">{{impressions.value.length}} / 10</mat-hint>
+                    </mat-form-field>
+                </div>
+            </div>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit">
+                <mat-icon>check</mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</form>

@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/10eb10a9-b7b6-496e-bb1b-d54b1a324be2/resourceGroups/Automation/providers/Microsoft.Web/sites/automationmdmfront",
+    "appService.deploySubpath": "dist\\mdmplatform-dashboard"
+}

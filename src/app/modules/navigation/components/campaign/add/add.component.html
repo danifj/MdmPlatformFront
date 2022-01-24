@@ -1,0 +1,110 @@
+<form [formGroup]="addForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+        <mat-card-header>
+            <mat-card-title>Add Campaign</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Campaign" formControlName="campaign">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="ID code campaign" formControlName="campaignCode">
+                        <mat-error *ngIf="addForm.controls['campaignCode'].hasError('required')">
+                            ID code campaign is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Customer account" formControlName="customerAccount">
+                        <mat-error *ngIf="addForm.controls['customerAccount'].hasError('required')">
+                            Customer account is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <textarea matInput placeholder="Address" formControlName="address"></textarea>
+                        <mat-error *ngIf="addForm.controls['address'].hasError('required')">
+                            Address is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div> -->
+            <!-- <div class="row" *ngIf="!hasUnitNumber">
+                <div class="col">
+                    <button mat-button type="button" (click)="hasUnitNumber = !hasUnitNumber">
+              + Add C/O, Apt, Suite, Unit
+            </button>
+                </div>
+            </div> -->
+            <!-- <div class="row" *ngIf="hasUnitNumber">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <textarea matInput placeholder="Address 2" formControlName="address2"></textarea>
+                    </mat-form-field>
+                </div>
+            </div> -->
+            <div class="row">
+                <!-- <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="City" formControlName="city">
+                        <mat-error *ngIf="addForm.controls['city'].hasError('required')">
+                            City is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div> -->
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <mat-select placeholder="Platform" formControlName="idPlatform">
+                            <mat-option *ngFor="let platform of platforms" [value]="platform.abbreviation">
+                                {{ platform.name }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="addForm.controls['idPlatform'].hasError('required')">
+                            Platform is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput #clicks maxlength="100" placeholder="Clicks" type="number" formControlName="click">
+                        <mat-hint align="end">{{clicks.value.length}} / 10</mat-hint>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput #impressions maxlength="100" placeholder="Impressions" type="number" formControlName="impression">
+                        <mat-hint align="end">{{impressions.value.length}} / 10</mat-hint>
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col">
+                    <mat-radio-group formControlName="shipping">
+                        <mat-radio-button value="free">Free Shipping</mat-radio-button>
+                        <mat-radio-button value="priority">Priority Shipping</mat-radio-button>
+                        <mat-radio-button value="nextday">Next Day Shipping</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div> -->
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit">
+                <mat-icon>check</mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</form>
